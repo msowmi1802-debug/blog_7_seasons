@@ -19,7 +19,13 @@ else:
 if EMAIL_PASSWORD is None:
     print("🚨 CODE ALERT: EMAIL_PASSWORD is completely empty (None)!")
 else:
-    print("✅ CODE ALERT: EMAIL_PASSWORD successfully detected.")
+    print("✅ CODE ALERT: EMAIL_PASSWORD successfully
+ detected.")
+if EMAIL_ADDRESS:
+    EMAIL_ADDRESS = EMAIL_ADDRESS.strip()
+
+if EMAIL_PASSWORD:
+    EMAIL_PASSWORD = EMAIL_PASSWORD.strip()
 
 
 
