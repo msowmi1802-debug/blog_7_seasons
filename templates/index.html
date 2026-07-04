@@ -4,18 +4,62 @@
 
 <section class="hero">
 
-    <h2>Every season tells a story.</h2>
+    <div class="hero-text">
 
-    <p>
-        A secure place to write your private memories
-        and share your public stories with the world.
-    </p>
+        <h1>
+            🌸 Welcome to 7_Seasons
+        </h1>
 
-    <div class="buttons">
+        <h2>
+            Write. Preserve. Share.
+        </h2>
 
-        <a href="/register" class="btn">Get Started</a>
+        <p>
+            A secure place to keep your private diary
+            and publish your stories for the world to read.
+        </p>
 
-        <a href="/login" class="btn secondary">Login</a>
+        <div class="hero-buttons">
+
+            {% if session.get("user_id") %}
+
+                <a
+                    href="{{ url_for('create_post') }}"
+                    class="primary-btn">
+
+                    ✍️ Create Post
+
+                </a>
+
+                <a
+                    href="{{ url_for('public_feed') }}"
+                    class="secondary-btn">
+
+                    🌍 Explore Feed
+
+                </a>
+
+            {% else %}
+
+                <a
+                    href="{{ url_for('register') }}"
+                    class="primary-btn">
+
+                    🚀 Get Started
+
+                </a>
+
+                <a
+                    href="{{ url_for('login') }}"
+                    class="secondary-btn">
+
+                    🔐 Login
+
+                </a>
+
+            {% endif %}
+
+        </div>
 
     </div>
 
@@ -23,19 +67,58 @@
 
 <section class="features">
 
-    <div class="card">
-        <h3>🔐 OTP Protected</h3>
-        <p>Every account is verified through Email OTP.</p>
+    <div class="feature-card">
+
+        <div class="feature-icon">
+
+            🔒
+
+        </div>
+
+        <h3>Private Diary</h3>
+
+        <p>
+
+            Keep your memories safe with private posts.
+
+        </p>
+
     </div>
 
-    <div class="card">
-        <h3>📖 Private Diary</h3>
-        <p>Your personal thoughts stay private and secure.</p>
+    <div class="feature-card">
+
+        <div class="feature-icon">
+
+            🌍
+
+        </div>
+
+        <h3>Public Blogging</h3>
+
+        <p>
+
+            Share your ideas and experiences with everyone.
+
+        </p>
+
     </div>
 
-    <div class="card">
-        <h3>🌍 Public Blog</h3>
-        <p>Share your journey with readers around the world.</p>
+    <div class="feature-card">
+
+        <div class="feature-icon">
+
+            ❤️
+
+        </div>
+
+        <h3>Community</h3>
+
+        <p>
+
+            Like and comment on public stories.
+
+        </p>
+
     </div>
 
 </section>

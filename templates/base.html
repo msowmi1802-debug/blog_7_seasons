@@ -1,49 +1,157 @@
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>7_Seasons</title>
 
-    <link rel="stylesheet"
-          href="{{ url_for('static', filename='css/style.css') }}">
+```
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+<title>7_Seasons</title>
+
+<link
+    rel="stylesheet"
+    href="{{ url_for('static', filename='css/style.css') }}">
+```
+
 </head>
+<script>
+
+async function sharePost() {
+
+    const url = window.location.href;
+
+    if (navigator.share) {
+
+        try {
+
+            await navigator.share({
+                title: document.title,
+                url: window.location.href
+            });
+
+        } catch (e) {}
+
+    } else {
+
+        try {
+
+            await navigator.clipboard.writeText(url);
+
+            alert("✅ blog Link copied!");
+
+        } catch (e) {
+
+            prompt("Copy this link:", url);
+
+        }
+
+    }
+
+}
+
+</script>
 
 <body>
 
-<header>
+<nav class="navbar">
 
-    <h1>🌸 7_Seasons</h1>
+```
+<div class="logo">
 
-    <nav>
+    🌸 7_Seasons
 
-        <a href="/">Home</a>
+</div>
 
-        <a href="/login">Login</a>
+{% if session.get("user_id") %}
 
-        <a href="/register">Register</a>
+<div class="nav-menu">
 
-    </nav>
+    <a href="{{ url_for('dashboard') }}">
+        Dashboard
+    </a>
 
-</header>
+    <a href="{{ url_for('create_post') }}">
+        Create
+    </a>
 
-<main>
+    <a href="{{ url_for('my_posts') }}">
+        My Posts
+    </a>
+
+    <a href="{{ url_for('public_feed') }}">
+        Public Feed
+    </a>
+
+    <a href="{{ url_for('profile', user_id=session['user_id']) }}">
+        Profile
+    </a>
+
+</div>
+
+<div class="nav-right">
+
+    <form
+        action="{{ url_for('search') }}"
+        method="GET">
+
+        <input
+            type="text"
+            name="q"
+            placeholder="Search posts...">
+
+    </form>
+
+    <a
+        class="logout-btn"
+        href="{{ url_for('logout') }}">
+
+        Logout
+
+    </a>
+
+</div>
+
+{% else %}
+
+<div class="nav-right">
+
+    <a href="{{ url_for('login') }}">
+        Login
+    </a>
+
+    <a href="{{ url_for('register') }}">
+        Register
+    </a>
+
+</div>
+
+{% endif %}
+```
+
+</nav>
+
+<div class="page-container">
+
 {% with messages = get_flashed_messages(with_categories=true) %}
 
-   {% if messages %}
+{% if messages %}
 
-       {% for category, message in messages %}
+{% for category, message in messages %}
 
-          <div class="flash {{ category }}">
+<div class="flash {{ category }}">
 
-              {{ message }}
+{{ message }}
 
-            </div>
+</div>
 
-        {% endfor %}
+{% endfor %}
 
-    {% endif %}
+{% endif %}
 
 {% endwith %}
 
@@ -51,7 +159,7 @@
 
 {% endblock %}
 
-</main>
+</div>
 
 </body>
 

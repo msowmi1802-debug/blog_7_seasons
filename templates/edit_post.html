@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="form-container">
+
+```
+<h2>Edit Post</h2>
+
+<form method="POST">
+
+    <input
+        type="text"
+        name="title"
+        value="{{ post['title'] }}"
+        required>
+
+    <select name="category" required>
+
+        <option value="Diary"
+            {% if post["category"] == "Diary" %}selected{% endif %}>
+            Diary
+        </option>
+
+        <option value="Blog"
+            {% if post["category"] == "Blog" %}selected{% endif %}>
+            Blog
+        </option>
+
+    </select>
+
+    <select name="visibility" required>
+
+        <option value="private"
+            {% if post["visibility"] == "private" %}selected{% endif %}>
+            Private
+        </option>
+
+        <option value="public"
+            {% if post["visibility"] == "public" %}selected{% endif %}>
+            Public
+        </option>
+
+    </select>
+
+    <textarea
+        name="content"
+        rows="10"
+        required>{{ post["content"] }}</textarea>
+
+    <button type="submit">
+
+        Update Post
+
+    </button>
+
+</form>
+```
+
+</div>
+
+{% endblock %}

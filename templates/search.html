@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="form-container">
+
+    <h2>🔍 Search Results</h2>
+
+    <p>
+        Search:
+        <strong>{{ keyword }}</strong>
+    </p>
+
+    <hr>
+
+    {% if posts %}
+
+        {% for post in posts %}
+
+            <div class="post-card">
+
+                <h3>{{ post["title"] }}</h3>
+
+                <p>
+
+                    By
+                    <a href="{{ url_for('profile', user_id=post['user_id']) }}">
+                        {{ post["name"] }}
+                    </a>
+
+                </p>
+
+                <p>
+
+                    {{ post["category"] }}
+
+                </p>
+
+                <a href="{{ url_for('public_post', post_id=post['id']) }}">
+                    Read More
+                </a>
+
+            </div>
+
+            <hr>
+
+        {% endfor %}
+
+    {% else %}
+
+        <p>No matching posts found.</p>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}

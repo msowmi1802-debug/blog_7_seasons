@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="form-container">
+
+```
+<h2>{{ user["name"] }}</h2>
+
+<p>
+    🌍 Public Posts: {{ public_post_count }}
+</p>
+
+<hr>
+
+{% if public_posts %}
+
+    {% for post in public_posts %}
+
+        <div class="post-card">
+
+            <h3>{{ post["title"] }}</h3>
+
+            <p>
+
+                {{ post["category"] }}
+
+                |
+
+                {{ post["created_at"] }}
+
+            </p>
+
+            <a href="{{ url_for('public_post', post_id=post['id']) }}">
+                Read
+            </a>
+
+        </div>
+
+        <hr>
+
+    {% endfor %}
+
+{% else %}
+
+    <p>
+        No public posts yet.
+    </p>
+
+{% endif %}
+```
+
+</div>
+
+{% endblock %}

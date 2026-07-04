@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="dashboard">
+
+    <div class="welcome-card">
+
+        <h1>
+            🌸 Welcome back, {{ session["user_name"] }}
+        </h1>
+
+        <p>
+            Every season tells a story. Continue writing yours.
+        </p>
+
+    </div>
+
+    <div class="stats-grid">
+
+        <div class="stat-card">
+
+            <div class="icon">
+                📖
+            </div>
+
+            <h2>{{ total_posts }}</h2>
+
+            <p>Total Posts</p>
+
+        </div>
+
+        <div class="stat-card">
+
+            <div class="icon">
+                📔
+            </div>
+
+            <h2>{{ diary_posts }}</h2>
+
+            <p>Diary Posts</p>
+
+        </div>
+
+        <div class="stat-card">
+
+            <div class="icon">
+                🌍
+            </div>
+
+            <h2>{{ public_posts }}</h2>
+
+            <p>Public Posts</p>
+
+        </div>
+
+    </div>
+
+    <div class="quick-actions">
+
+        <h2>
+            Quick Actions
+        </h2>
+
+        <div class="action-buttons">
+
+            <a
+                href="{{ url_for('create_post') }}"
+                class="action-btn">
+
+                ✍️ Create Post
+
+            </a>
+
+            <a
+                href="{{ url_for('my_posts') }}"
+                class="action-btn">
+
+                📚 My Posts
+
+            </a>
+
+            <a
+                href="{{ url_for('public_feed') }}"
+                class="action-btn">
+
+                🌍 Public Feed
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
