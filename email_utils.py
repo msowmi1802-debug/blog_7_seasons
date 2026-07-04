@@ -8,8 +8,19 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
-EMAIL_ADDRESS = os.getenv("EMAIL_ADDRESS")
-EMAIL_PASSWORD = os.getenv("EMAIL_PASSWORD")
+
+EMAIL_ADDRESS = os.environ.get("EMAIL_ADDRESS")
+EMAIL_PASSWORD = os.environ.get("EMAIL_PASSWORD")
+if EMAIL_ADDRESS is None:
+    print("🚨 CODE ALERT: EMAIL_ADDRESS is completely empty (None)!")
+else:
+    print("✅ CODE ALERT: EMAIL_ADDRESS successfully detected.")
+
+if EMAIL_PASSWORD is None:
+    print("🚨 CODE ALERT: EMAIL_PASSWORD is completely empty (None)!")
+else:
+    print("✅ CODE ALERT: EMAIL_PASSWORD successfully detected.")
+
 
 
 def send_otp_email(receiver_email, otp):
