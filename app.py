@@ -1334,4 +1334,7 @@ def logout():
 
     return redirect(url_for("login"))
 if __name__ == "__main__":
+
+    create_tables()
+
     app.run(debug=True)
