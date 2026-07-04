@@ -55,7 +55,7 @@ Do not share it with anyone.
 """
     )
 
-    with smtplib.SMTP("smtp-relay.brevo.com", 2525,timeout=10) as smtp:
+    with smtplib.SMTP("smtp.gmail.com", 2525,timeout=10) as smtp:
 
         smtp.starttls()
 
