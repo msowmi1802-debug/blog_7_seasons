@@ -415,10 +415,11 @@ def register():
         otp = generate_otp()
 
         save_otp(cursor,user_id, otp)
-        send_otp_email(email, otp)
+        
         conn.commit()
         print("User committed successfully")
         conn.close()
+        send_otp_email(email, otp)
 
         flash(
             "Account created successfully!",
