@@ -38,7 +38,7 @@ Do not share it with anyone.
 """
     )
 
-    with smtplib.SMTP("smtp.gmail.com", 587) as smtp:
+    with smtplib.SMTP("smtp.gmail.com", 587,timeout=10) as smtp:
 
         smtp.starttls()
 
