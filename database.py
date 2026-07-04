@@ -13,7 +13,7 @@ DATABASE = os.path.join(BASE_DIR, "instance", "secure_diary.db")
 
 def get_connection():
     """Create and return a database connection."""
-    conn = sqlite3.connect(DATABASE)
+    conn = sqlite3.connect(DATABASE, timeout=30)
     conn.row_factory = sqlite3.Row
     return conn
 
