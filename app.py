@@ -1334,7 +1334,11 @@ def logout():
 
     return redirect(url_for("login"))
 if __name__ == "__main__":
-
+ 
+# Render sets a PORT environment variable; fallback to 5000 locally
+    port = int(os.environ.get("PORT", 5000))
+    # You must bind to 0.0.0.0 so the container is accessible externally
+    app.run(host="0.0.0.0", port=port)
     create_tables()
 
     app.run(debug=True)
