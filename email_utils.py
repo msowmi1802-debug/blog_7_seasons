@@ -21,11 +21,7 @@ if EMAIL_PASSWORD is None:
 else:
     print("✅ CODE ALERT: EMAIL_PASSWORD successfully
  detected.")
-if EMAIL_ADDRESS:
-    EMAIL_ADDRESS = EMAIL_ADDRESS.strip()
-
-if EMAIL_PASSWORD:
-    EMAIL_PASSWORD = EMAIL_PASSWORD.strip()
+    
 
 
 
